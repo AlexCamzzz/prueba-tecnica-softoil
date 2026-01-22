@@ -1,0 +1,71 @@
+# Task Manager Frontend
+
+Este repositorio contiene el frontend de la aplicación de **Gestión de Tareas**, desarrollado con **Nuxt 4** y **Nuxt UI**. La aplicación permite a los usuarios registrarse, iniciar sesión y administrar sus tareas personales de manera eficiente.
+
+## Tecnologías
+
+* **[Nuxt 4](https://nuxt.com/):** Framework principal.
+* **[Nuxt UI](https://ui.nuxt.com/):** Biblioteca de componentes para la interfaz de usuario (UCard, UButton, UForm, etc.).
+* **[Pinia](https://pinia.vuejs.org/):** Gestión del estado global (Stores de `auth` y `tasks`).
+* **TypeScript:** Lenguaje principal para lógica y tipado seguro.
+
+## Funcionalidades
+
+### Autenticación
+El sistema cuenta con un manejo completo de sesión utilizando tokens JWT:
+* **Registro:** Creación de cuenta con nombre, email y contraseña.
+* **Login:** Inicio de sesión y almacenamiento seguro del token (cookies).
+* **Protección de Rutas:** Middleware de autenticación para proteger vistas privadas.
+* **Logout:** Cierre de sesión accesible desde el menú principal.
+
+### Gestión de Tareas
+Funcionalidades CRUD gestionadas a través del `tasksStore`:
+* **Listar:** Visualización de tareas pendientes y completadas.
+* **Filtrar:** Organización por estado (Completado/Pendiente) y categoría.
+* **Crear:** Añadir nuevas tareas con título, descripción y fecha límite.
+* **Actualizar:** Modificar detalles de las tareas existentes.
+* **Completar:** Marcar tareas como finalizadas rápidamente.
+* **Eliminar:** Borrar tareas del sistema.
+
+##  Configuración del Proyecto
+
+Asegúrate de tener instalado **Node.js** y **pnpm**.
+
+1.  **Instalar dependencias:**
+
+    ```bash
+    pnpm install
+    ```
+
+2.  **Configurar Variables de Entorno:**
+
+    Crea un archivo `.env` en la raíz (si es necesario para tu configuración de API) definiendo la URL base de tu backend.
+
+3.  **Servidor de Desarrollo:**
+
+    Inicia el servidor local en `http://localhost:3000`:
+
+    ```bash
+    pnpm dev
+    ```
+
+4.  **Producción:**
+
+    Para construir la aplicación para producción:
+
+    ```bash
+    pnpm build
+    ```
+
+## 🔗 Estructura de la API
+
+El frontend espera conectarse a una API que cumpla con los siguientes endpoints (definidos en los stores):
+
+* `POST /auth/register`
+* `POST /auth/login`
+* `GET /auth/profile`
+* `GET /tasks`
+* `POST /tasks`
+* `PUT /tasks/:id`
+* `PATCH /tasks/:id/complete`
+* `DELETE /tasks/:id`
