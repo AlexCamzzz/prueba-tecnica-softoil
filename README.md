@@ -10,14 +10,43 @@ Aplicación completa de gestión de tareas desarrollada bajo arquitectura **Mono
 ```
 /
 ├── backend/     # API RESTful (NestJS + Prisma + SQLite)
-└── frontend/    # Cliente SPA/SSR (Nuxt 4 + Pinia)
+├── frontend/    # Cliente SPA/SSR (Nuxt 4 + Pinia)
+├── start.sh     # Script de inicio para Linux/Mac
+└── start.bat    # Script de inicio para Windows
 ```
 
 ---
 
-## Instalación y Ejecución
+## Ejecución Rápida (Recomendado)
 
-### Backend (Puerto 3001)
+El proyecto incluye scripts automatizados que se encargan de instalar dependencias (si faltan), configurar la base de datos (Prisma migrate) y levantar ambos servidores en paralelo.
+
+### Linux y macOS
+
+Es necesario dar permisos de ejecución al script la primera vez:
+
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+### Windows
+
+Puedes hacer doble clic en el archivo `start.bat` o ejecutarlo desde la terminal:
+
+```cmd
+start.bat
+```
+
+> **Nota:** En Windows, el script abrirá dos ventanas de consola adicionales (una para el Backend y otra para el Frontend). Para detener los servidores, cierra dichas ventanas.
+
+---
+
+## Instalación y Ejecución Manual
+
+Si prefieres ejecutar los servicios paso a paso o necesitas depurar uno específicamente:
+
+### 1. Backend (Puerto 3001)
 
 ```bash
 cd backend
@@ -28,7 +57,7 @@ npm run start:dev
 
 El servidor estará disponible en `http://localhost:3001`
 
-### Frontend (Puerto 3000)
+### 2. Frontend (Puerto 3000)
 
 ```bash
 cd frontend
@@ -90,6 +119,6 @@ La aplicación estará disponible en `http://localhost:3000`
 
 ## Prerrequisitos
 
-- Node.js (versión LTS)
+- Node.js (versión LTS v18+ recomendada)
 - npm o pnpm
 - Git
